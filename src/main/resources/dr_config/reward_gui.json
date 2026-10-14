@@ -1,58 +1,71 @@
 {
   "title": "<gold><bold>%dex_type% Rewards",
-  "size": 6,
-  "page_layout": [
+  "use_hopper_gui": false,
+  "rows": 6,
+  "gui_layout": [
     "#########",
     "####I####",
     "#GGGGGGG#",
     "#GGGGGGG#",
     "#GGGGGGG#",
-    "P#######N"
+    "P###C###N"
   ],
-  "page_layout_symbols": {
-    "background": "#",
-    "player_info": "I",
-    "group": "G",
-    "previous_page": "P",
-    "next_page": "N"
+  "background_item": {
+    "symbol": "#",
+    "item": {
+      "id": "minecraft:gray_stained_glass_pane"
+    },
+    "item_name": "",
+    "item_lore": []
   },
-  "background": {
-    "item": "minecraft:gray_stained_glass_pane",
-    "name": "",
-    "lore": [],
-    "item_data": {}
+  "previous_item": {
+    "symbol": "P",
+    "item": {
+      "id": "minecraft:arrow"
+    },
+    "item_name": "<gray>Previous",
+    "item_lore": []
   },
-  "player_info": {
-    "name": "<light_purple>%dex_type% Progress Info",
-    "lore": [
-      "<gray>Latest Reward: %player.reward_group%",
-      "<gray>Progress: %player.dex_count%/%pokedex.total% (%player.dex_percent%%)"
-    ],
-    "show_enchantment_glint": true
+  "next_item": {
+    "symbol": "N",
+    "item": {
+      "id": "minecraft:arrow"
+    },
+    "item_name": "<gray>Next",
+    "item_lore": []
   },
-  "claimed_group": {
-    "name": "<green><bold>%group.name% (%group.percent%%)",
-    "lore": ["<blue>Already Claimed!"],
-    "show_enchantment_glint": false
+  "close_item": {
+    "symbol": "C",
+    "item": {
+      "id": "minecraft:barrier"
+    },
+    "item_name": "<gray>Close",
+    "item_lore": []
   },
-  "claimable_group": {
-    "name": "<gold><bold>%group.name% (%group.percent%%)",
-    "lore": ["<green>Claimable!"],
-    "show_enchantment_glint": true
+  "player_info_item": {
+    "symbol": "I",
+    "item_name": "<light_purple>%dex_type% Progress Info",
+    "item_lore": [
+      "<gray>Latest Reward: %player_reward_group%",
+      "<gray>Progress: %player_dex_count%/%pokedex_total% (%player_dex_percent%%)"
+    ]
   },
-  "locked_group": {
-    "name": "<red><bold>%group.name% (%group.percent%%)",
-    "lore": ["<red>Not Unlocked!"],
-    "show_enchantment_glint": false
-  },
-  "navigation": {
-    "previous_item": "minecraft:arrow",
-    "previous_item_data": {},
-    "previous_name": "<gray>Previous",
-    "previous_lore": [],
-    "next_item": "minecraft:arrow",
-    "next_item_data": {},
-    "next_name": "<gray>Next",
-    "next_lore": []
+  "group_item": {
+    "symbol": "G",
+    "claimed": {
+      "item_name": "<green><bold>%group_name% (%group_percent%%)",
+      "item_lore": ["<blue>Already Claimed!"]
+    },
+    "claimable": {
+      "item_name": "<gold><bold>%group_name% (%group_percent%%)",
+      "item_lore": ["<green>Claimable!"]
+    },
+    "locked": {
+      "item": {
+        "id": "minecraft:barrier"
+      },
+      "item_name": "<red><bold>%group_name% (%group_percent%%)",
+      "item_lore": ["<red>Not Unlocked!"]
+    }
   }
 }

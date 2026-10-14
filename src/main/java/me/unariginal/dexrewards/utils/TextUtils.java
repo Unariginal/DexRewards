@@ -1,90 +1,122 @@
 package me.unariginal.dexrewards.utils;
 
 import me.unariginal.dexrewards.DexRewards;
-import me.unariginal.dexrewards.config.MessagesConfig;
-import me.unariginal.dexrewards.config.PlayerDataConfig;
-import me.unariginal.dexrewards.datatypes.DexType;
-import me.unariginal.dexrewards.datatypes.PlayerData;
-import me.unariginal.dexrewards.datatypes.rewards.Reward;
-import me.unariginal.dexrewards.datatypes.rewards.RewardGroup;
-import net.kyori.adventure.text.Component;
+import me.unariginal.dexrewards.config.DexTypeConfig;
+import me.unariginal.dexrewards.data.rewards.Reward;
+import me.unariginal.dexrewards.data.rewards.RewardGroup;
+import me.unariginal.dexrewards.placeholders.ParseContext;
+import me.unariginal.dexrewards.placeholders.PlaceholderManager;
+import me.unariginal.dexrewards.placeholders.interfaces.DexTypePlaceholder;
+import me.unariginal.dexrewards.placeholders.interfaces.PlayerDexTypePlaceholder;
+import me.unariginal.dexrewards.placeholders.interfaces.PlayerPlaceholder;
+import me.unariginal.dexrewards.placeholders.interfaces.RewardGroupPlaceholder;
+import me.unariginal.dexrewards.placeholders.interfaces.ServerPlaceholder;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
+import org.jetbrains.annotations.Nullable;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static me.unariginal.dexrewards.placeholders.PlaceholderManager.*;
 
 public class TextUtils {
+    private static final Pattern pattern = Pattern.compile("%([A-Za-z0-9_.-]+(?: [^%]+)?)%");
+
+    public static List<Text> deserializeLore(List<String> lore, ParseContext parseContext) {
+        List<Text> returnLore = new ArrayList<>();
+        lore.forEach(line -> returnLore.add(deserialize(line, parseContext)));
+        return returnLore;
+    }
+
     public static Text deserialize(String text) {
-        Component component = MiniMessage.miniMessage().deserialize(text);
-        return DexRewards.INSTANCE.audience().toNative(component);
+        return deserialize(text, ParseContext.builder().build());
+    }
+
+    public static Text deserialize(String text, ParseContext parseContext) {
+        text = parse(text, parseContext);
+        return DexRewards.INSTANCE.audience.toNative(MiniMessage.miniMessage().deserialize(text));
+    }
+
+    public static String parse(String text, ParseContext parseContext) {
+        Matcher matcher = pattern.matcher(text);
+        StringBuilder result = new StringBuilder();
+
+        while (matcher.find()) {
+            String[] parts = matcher.group(1).split(" ");
+            String id = parts[0];
+            List<String> args = Arrays.asList(parts).subList(1, parts.length);
+
+            String replacement = resolve(id, args, parseContext);
+            if (replacement != null) {
+                matcher.appendReplacement(result, Matcher.quoteReplacement(replacement));
+            }
+        }
+
+        matcher.appendTail(result);
+        return result.toString();
     }
 
     public static String parse(String text) {
-        return text.replaceAll("%prefix%", MessagesConfig.messages.prefix);
+        return parse(text, ParseContext.builder().build());
     }
 
-    public static String parse(String text, DexType dexType) {
-        return parse(text)
-                .replaceAll("%dex_type%", dexType.displayName)
-                .replaceAll("%pokedex.total%", String.valueOf(DexRewards.INSTANCE.dexTypeTotals.get(dexType)));
+    @Nullable
+    private static String resolve(String id, List<String> args, ParseContext parseContext) {
+        for (ServerPlaceholder placeholder : serverPlaceholders) {
+            if (placeholder.id().contains(id)) return placeholder.handle(args).string;
+        }
+
+        // The dex type can come from an argument (%pokedex_total kanto%), the context, or the default dex type
+        for (DexTypePlaceholder placeholder : dexTypePlaceholders) {
+            if (!placeholder.id().contains(id)) continue;
+            DexTypeConfig dexTypeConfig = PlaceholderManager.resolveDexType(parseContext.getDexType(), args);
+            return dexTypeConfig != null ? placeholder.handle(dexTypeConfig, args).string : null;
+        }
+
+        ServerPlayerEntity player = parseContext.getPlayer();
+        if (player != null) {
+            for (PlayerPlaceholder placeholder : playerPlaceholders) {
+                if (placeholder.id().contains(id)) return placeholder.handle(player, args).string;
+            }
+
+            for (PlayerDexTypePlaceholder placeholder : playerDexTypePlaceholders) {
+                if (!placeholder.id().contains(id)) continue;
+                DexTypeConfig dexTypeConfig = PlaceholderManager.resolveDexType(parseContext.getDexType(), args);
+                return dexTypeConfig != null ? placeholder.handle(player, dexTypeConfig, args).string : null;
+            }
+        }
+
+        RewardGroup rewardGroup = parseContext.getRewardGroup();
+        if (rewardGroup != null) {
+            for (RewardGroupPlaceholder placeholder : rewardGroupPlaceholders) {
+                if (placeholder.id().contains(id)) return placeholder.handle(rewardGroup, args).string;
+            }
+        }
+
+        return null;
     }
 
-    public static String parse(String text, ServerPlayerEntity player) {
-        return parse(text)
-                .replaceAll("%player%", player.getNameForScoreboard());
-    }
-
-    public static String parse(String text, RewardGroup rewardGroup) {
-        text = parse(text)
-                .replaceAll("%group.name%", rewardGroup != null ? rewardGroup.displayName : "null")
-                .replaceAll("%group.percent%", rewardGroup != null ? String.valueOf(rewardGroup.requiredPercent) : "null");
-        return text;
+    public static String formatPercent(double percent) {
+        return new DecimalFormat("#.##", DecimalFormatSymbols.getInstance(Locale.ROOT)).format(percent);
     }
 
     public static String parse(String text, Reward reward) {
         return parse(text)
-                .replaceAll("%reward%", reward.displayName);
+                .replace("%reward%", reward.displayName);
     }
 
     public static String parse(String text, ItemStack itemStack) {
         return parse(text)
-                .replaceAll("%item%", itemStack.getName().getString())
-                .replaceAll("%item_count%", String.valueOf(itemStack.getCount()));
-    }
-
-    public static String parse(String text, DexType dexType, ServerPlayerEntity player) {
-        text = parse(text, dexType);
-        PlayerData playerData = PlayerDataConfig.getPlayerData(player.getUuid());
-        if (playerData != null) {
-            PlayerData.ProgressTracker progressTracker = playerData.getProgress(dexType.name);
-            if (progressTracker != null) {
-                String group = "None";
-                for (RewardGroup rewardGroup : dexType.rewardGroups) {
-                    if (progressTracker.claimedRewards.contains(rewardGroup.name)) {
-                        group = rewardGroup.displayName;
-                    }
-                }
-
-                text = text
-                        .replaceAll("%player.reward_group%", group)
-                        .replaceAll("%player.dex_count%", String.valueOf(progressTracker.progressCount))
-                        .replaceAll("%player.dex_percent%", new DecimalFormat("#.##").format(((double) progressTracker.progressCount / DexRewards.INSTANCE.dexTypeTotals.get(dexType)) * 100));
-            }
-        }
-        return text;
-    }
-
-    public static String parse(String text, ServerPlayerEntity player, RewardGroup rewardGroup) {
-        text = parse(text, rewardGroup);
-        text = parse(text, player);
-        return text;
-    }
-
-    public static String parse(String text, ServerPlayerEntity player, RewardGroup rewardGroup, DexType dexType) {
-        text = parse(text, rewardGroup);
-        text = parse(text, dexType, player);
-        return text;
+                .replace("%item%", itemStack.getName().getString())
+                .replace("%item_count%", String.valueOf(itemStack.getCount()));
     }
 }

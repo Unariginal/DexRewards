@@ -4,9 +4,8 @@ import com.cobblemon.mod.common.command.PokedexCommand;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import me.unariginal.dexrewards.DexRewards;
 import me.unariginal.dexrewards.config.PlayerDataConfig;
-import me.unariginal.dexrewards.datatypes.PlayerData;
+import me.unariginal.dexrewards.data.PlayerData;
 import net.minecraft.command.EntitySelector;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -16,7 +15,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.io.IOException;
 import java.util.List;
 
 @Mixin(value = PokedexCommand.class, remap = false)
@@ -26,13 +24,9 @@ public class PokedexCommandMixin {
         for (ServerPlayerEntity player : players) {
             PlayerData data = PlayerDataConfig.getPlayerData(player.getUuid());
             if (data != null) {
-                try {
-                    data.updateCaughtCount();
-                    data.updateClaimableRewards();
-                    PlayerDataConfig.updatePlayerData(data);
-                } catch (IOException e) {
-                    DexRewards.LOGGER.error("[DexRewards] Failed to update player data for player \"{}\"", player.getNameForScoreboard(), e);
-                }
+                data.updateProgressCount();
+                data.updateClaimableRewards();
+                PlayerDataConfig.savePlayerData(player.getUuid());
             }
         }
     }

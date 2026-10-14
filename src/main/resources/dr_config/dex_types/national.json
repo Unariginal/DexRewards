@@ -3,384 +3,869 @@
   "pokedex": "cobblemon:national",
   "require_caught": true,
   "require_shiny": false,
+  "require_all_forms": false,
   "valid_species": [],
   "ignored_species": [],
   "valid_labels": [],
   "ignored_labels": [],
+  "ignored_forms": [],
   "reward_groups": {
-    "trainer": {
-      "required_percent": 5.0,
-      "display_name": "Trainer",
-      "icon": "cobblemon:poke_ball",
-      "icon_lore": [],
-      "icon_data": {},
+    "newcomer": {
+      "required_percent": 2.0,
+      "display_name": "Newcomer",
+      "icon_item": {
+        "id": "cobblemon:poke_ball"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 16x Poké Ball",
+        "<white> • 8x Potion"
+      ],
       "rewards": {
-        "example_item_reward": {
-          "display_name": "%item_count%x %item%",
+        "poke_ball": {
           "type": "item",
-          "item": "cobblemon:poke_ball",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 16
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:poke_ball"
+          },
+          "min_count": 16,
+          "max_count": 16
+        },
+        "potion": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:potion"
+          },
+          "min_count": 8,
+          "max_count": 8
         }
       }
     },
     "rookie": {
-      "required_percent": 10.0,
+      "required_percent": 5.0,
       "display_name": "Rookie",
-      "icon": "cobblemon:fast_ball",
-      "icon_lore": [],
-      "icon_data": {},
+      "icon_item": {
+        "id": "cobblemon:great_ball"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 16x Great Ball",
+        "<white> • 4x Revive"
+      ],
       "rewards": {
-        "example_item_reward": {
-          "display_name": "%item_count%x %item%",
+        "great_ball": {
           "type": "item",
-          "item": "cobblemon:great_ball",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 16
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:great_ball"
+          },
+          "min_count": 16,
+          "max_count": 16
+        },
+        "revive": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:revive"
+          },
+          "min_count": 4,
+          "max_count": 4
         }
       }
     },
-    "beginner": {
-      "required_percent": 15.0,
-      "display_name": "Beginner",
-      "icon": "cobblemon:great_ball",
-      "icon_lore": [],
-      "icon_data": {},
+    "trainer": {
+      "required_percent": 10.0,
+      "display_name": "Trainer",
+      "icon_item": {
+        "id": "cobblemon:exp_share"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 1x Exp. Share",
+        "<white> • 16x Exp. Candy S"
+      ],
       "rewards": {
-        "example_item_reward": {
-          "display_name": "%item_count%x %item%",
+        "exp_share": {
           "type": "item",
-          "item": "cobblemon:thunder_stone",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 2
-        }
-      }
-    },
-    "novice": {
-      "required_percent": 20.0,
-      "display_name": "Novice",
-      "icon": "cobblemon:level_ball",
-      "icon_lore": [],
-      "icon_data": {},
-      "rewards": {
-        "example_item_reward": {
           "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:exp_share"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "exp_candy_s": {
           "type": "item",
-          "item": "cobblemon:exp_candy_s",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 48
-        }
-      }
-    },
-    "ranger": {
-      "required_percent": 25.0,
-      "display_name": "Ranger",
-      "icon": "cobblemon:ultra_ball",
-      "icon_lore": [],
-      "icon_data": {},
-      "rewards": {
-        "example_item_reward": {
           "display_name": "%item_count%x %item%",
-          "type": "item",
-          "item": "cobblemon:ultra_ball",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 32
+          "item": {
+            "id": "cobblemon:exp_candy_s"
+          },
+          "min_count": 16,
+          "max_count": 16
         }
       }
     },
     "collector": {
-      "required_percent": 30.0,
+      "required_percent": 15.0,
       "display_name": "Collector",
-      "icon": "cobblemon:lure_ball",
-      "icon_lore": [],
-      "icon_data": {},
+      "icon_item": {
+        "id": "cobblemon:fire_stone"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 1x Fire Stone",
+        "<white> • 1x Water Stone",
+        "<white> • 1x Thunder Stone",
+        "<white> • 1x Leaf Stone"
+      ],
       "rewards": {
-        "example_item_reward": {
-          "display_name": "%item_count%x %item%",
+        "fire_stone": {
           "type": "item",
-          "item": "cobblemon:fire_stone",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 2
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:fire_stone"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "water_stone": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:water_stone"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "thunder_stone": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:thunder_stone"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "leaf_stone": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:leaf_stone"
+          },
+          "min_count": 1,
+          "max_count": 1
         }
       }
     },
-    "apprentice": {
+    "ranger": {
+      "required_percent": 20.0,
+      "display_name": "Ranger",
+      "icon_item": {
+        "id": "cobblemon:ultra_ball"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 16x Ultra Ball",
+        "<white> • 8x Hyper Potion"
+      ],
+      "rewards": {
+        "ultra_ball": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:ultra_ball"
+          },
+          "min_count": 16,
+          "max_count": 16
+        },
+        "hyper_potion": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:hyper_potion"
+          },
+          "min_count": 8,
+          "max_count": 8
+        }
+      }
+    },
+    "naturalist": {
+      "required_percent": 25.0,
+      "display_name": "Naturalist",
+      "icon_item": {
+        "id": "cobblemon:moon_stone"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 1x Moon Stone",
+        "<white> • 1x Sun Stone",
+        "<white> • 1x Ice Stone",
+        "<white> • 8x Exp. Candy M"
+      ],
+      "rewards": {
+        "moon_stone": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:moon_stone"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "sun_stone": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:sun_stone"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "ice_stone": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:ice_stone"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "exp_candy_m": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:exp_candy_m"
+          },
+          "min_count": 8,
+          "max_count": 8
+        }
+      }
+    },
+    "specialist": {
+      "required_percent": 30.0,
+      "display_name": "Specialist",
+      "icon_item": {
+        "id": "cobblemon:quick_ball"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 8x Quick Ball",
+        "<white> • 8x Dusk Ball",
+        "<white> • 8x Timer Ball"
+      ],
+      "rewards": {
+        "quick_ball": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:quick_ball"
+          },
+          "min_count": 8,
+          "max_count": 8
+        },
+        "dusk_ball": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:dusk_ball"
+          },
+          "min_count": 8,
+          "max_count": 8
+        },
+        "timer_ball": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:timer_ball"
+          },
+          "min_count": 8,
+          "max_count": 8
+        }
+      }
+    },
+    "trader": {
       "required_percent": 35.0,
-      "display_name": "Apprentice",
-      "icon": "cobblemon:safari_ball",
-      "icon_lore": [],
-      "icon_data": {},
+      "display_name": "Trader",
+      "icon_item": {
+        "id": "cobblemon:link_cable"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 3x Link Cable",
+        "<white> • 1x King's Rock",
+        "<white> • 1x Metal Coat"
+      ],
       "rewards": {
-        "example_item_reward": {
-          "display_name": "%item_count%x %item%",
+        "link_cable": {
           "type": "item",
-          "item": "cobblemon:exp_candy_m",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 48
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:link_cable"
+          },
+          "min_count": 3,
+          "max_count": 3
+        },
+        "kings_rock": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:kings_rock"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "metal_coat": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:metal_coat"
+          },
+          "min_count": 1,
+          "max_count": 1
         }
       }
     },
-    "expert": {
+    "scholar": {
       "required_percent": 40.0,
-      "display_name": "Expert",
-      "icon": "cobblemon:heavy_ball",
-      "icon_lore": [],
-      "icon_data": {},
+      "display_name": "Scholar",
+      "icon_item": {
+        "id": "cobblemon:shiny_stone"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 1x Shiny Stone",
+        "<white> • 1x Dusk Stone",
+        "<white> • 1x Dawn Stone",
+        "<white> • 16x Exp. Candy M"
+      ],
       "rewards": {
-        "example_item_reward": {
-          "display_name": "%item_count%x %item%",
+        "shiny_stone": {
           "type": "item",
-          "item": "cobblemon:nest_ball",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 32
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:shiny_stone"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "dusk_stone": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:dusk_stone"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "dawn_stone": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:dawn_stone"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "exp_candy_m": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:exp_candy_m"
+          },
+          "min_count": 16,
+          "max_count": 16
         }
       }
     },
     "veteran": {
       "required_percent": 45.0,
       "display_name": "Veteran",
-      "icon": "cobblemon:love_ball",
-      "icon_lore": [],
-      "icon_data": {},
+      "icon_item": {
+        "id": "cobblemon:lucky_egg"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 1x Lucky Egg",
+        "<white> • 8x Rare Candy"
+      ],
       "rewards": {
-        "example_item_reward": {
-          "display_name": "%item_count%x %item%",
+        "lucky_egg": {
           "type": "item",
-          "item": "cobblemon:lure_ball",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 32
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:lucky_egg"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "rare_candy": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:rare_candy"
+          },
+          "min_count": 8,
+          "max_count": 8
         }
       }
     },
-    "sage": {
+    "expert": {
       "required_percent": 50.0,
-      "display_name": "Sage",
-      "icon": "cobblemon:moon_ball",
-      "icon_lore": [],
-      "icon_data": {},
+      "display_name": "Expert",
+      "icon_item": {
+        "id": "cobblemon:master_ball"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 1x Master Ball",
+        "<white> • 1x Ability Capsule"
+      ],
       "rewards": {
-        "example_item_reward": {
-          "display_name": "%item_count%x %item%",
+        "master_ball": {
           "type": "item",
-          "item": "cobblemon:quick_ball",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 16
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:master_ball"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "ability_capsule": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:ability_capsule"
+          },
+          "min_count": 1,
+          "max_count": 1
         }
       }
     },
-    "professor": {
+    "engineer": {
       "required_percent": 55.0,
-      "display_name": "Professor",
-      "icon": "cobblemon:repeat_ball",
-      "icon_lore": [],
-      "icon_data": {},
+      "display_name": "Engineer",
+      "icon_item": {
+        "id": "cobblemon:upgrade"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 1x Upgrade",
+        "<white> • 1x Dubious Disc",
+        "<white> • 1x Electirizer",
+        "<white> • 1x Magmarizer",
+        "<white> • 1x Protector"
+      ],
       "rewards": {
-        "example_item_reward": {
-          "display_name": "%item_count%x %item%",
+        "upgrade": {
           "type": "item",
-          "item": "cobblemon:rare_candy",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 16
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:upgrade"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "dubious_disc": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:dubious_disc"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "electirizer": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:electirizer"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "magmarizer": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:magmarizer"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "protector": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:protector"
+          },
+          "min_count": 1,
+          "max_count": 1
         }
       }
     },
-    "commander": {
+    "mystic": {
       "required_percent": 60.0,
-      "display_name": "Commander",
-      "icon": "cobblemon:timer_ball",
-      "icon_lore": [],
-      "icon_data": {},
+      "display_name": "Mystic",
+      "icon_item": {
+        "id": "cobblemon:reaper_cloth"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 1x Reaper Cloth",
+        "<white> • 1x Dragon Scale",
+        "<white> • 1x Prism Scale",
+        "<white> • 1x Sachet",
+        "<white> • 1x Whipped Dream"
+      ],
       "rewards": {
-        "example_item_reward": {
-          "display_name": "%item_count%x %item%",
+        "reaper_cloth": {
           "type": "item",
-          "item": "cobblemon:rare_candy",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 32
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:reaper_cloth"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "dragon_scale": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:dragon_scale"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "prism_scale": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:prism_scale"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "sachet": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:sachet"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "whipped_dream": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:whipped_dream"
+          },
+          "min_count": 1,
+          "max_count": 1
         }
       }
     },
     "elite": {
       "required_percent": 65.0,
       "display_name": "Elite",
-      "icon": "cobblemon:luxury_ball",
-      "icon_lore": [],
-      "icon_data": {},
+      "icon_item": {
+        "id": "cobblemon:exp_candy_l"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 16x Exp. Candy L",
+        "<white> • 4x PP Up"
+      ],
       "rewards": {
-        "example_item_reward": {
-          "display_name": "%item_count%x %item%",
+        "exp_candy_l": {
           "type": "item",
-          "item": "cobblemon:luxury_ball",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 16
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:exp_candy_l"
+          },
+          "min_count": 16,
+          "max_count": 16
+        },
+        "pp_up": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:pp_up"
+          },
+          "min_count": 4,
+          "max_count": 4
         }
       }
     },
-    "executive": {
+    "ace": {
       "required_percent": 70.0,
-      "display_name": "Executive",
-      "icon": "cobblemon:premier_ball",
-      "icon_lore": [],
-      "icon_data": {},
+      "display_name": "Ace",
+      "icon_item": {
+        "id": "cobblemon:leftovers"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 1x Leftovers",
+        "<white> • 1x Life Orb",
+        "<white> • 1x Choice Scarf"
+      ],
       "rewards": {
-        "example_item_reward": {
-          "display_name": "%item_count%x %item%",
+        "leftovers": {
           "type": "item",
-          "item": "cobblemon:cherish_ball",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 1
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:leftovers"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "life_orb": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:life_orb"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "choice_scarf": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:choice_scarf"
+          },
+          "min_count": 1,
+          "max_count": 1
         }
       }
     },
     "master": {
       "required_percent": 75.0,
       "display_name": "Master",
-      "icon": "cobblemon:dusk_ball",
-      "icon_lore": [],
-      "icon_data": {},
+      "icon_item": {
+        "id": "cobblemon:ability_patch"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 1x Master Ball",
+        "<white> • 1x Ability Patch",
+        "<white> • 8x Rare Candy"
+      ],
       "rewards": {
-        "example_item_reward": {
-          "display_name": "%item_count%x %item%",
+        "master_ball": {
           "type": "item",
-          "item": "cobblemon:exp_candy_l",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 16
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:master_ball"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "ability_patch": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:ability_patch"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "rare_candy": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:rare_candy"
+          },
+          "min_count": 8,
+          "max_count": 8
         }
       }
     },
-    "baron": {
+    "strategist": {
       "required_percent": 80.0,
-      "display_name": "Baron",
-      "icon": "cobblemon:quick_ball",
-      "icon_lore": [],
-      "icon_data": {},
+      "display_name": "Strategist",
+      "icon_item": {
+        "id": "cobblemon:adamant_mint"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 1x Adamant Mint",
+        "<white> • 1x Modest Mint",
+        "<white> • 1x Jolly Mint",
+        "<white> • 1x Timid Mint"
+      ],
       "rewards": {
-        "example_item_reward": {
-          "display_name": "%item_count%x %item%",
+        "adamant_mint": {
           "type": "item",
-          "item": "cobblemon:beast_ball",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 1
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:adamant_mint"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "modest_mint": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:modest_mint"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "jolly_mint": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:jolly_mint"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "timid_mint": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:timid_mint"
+          },
+          "min_count": 1,
+          "max_count": 1
         }
       }
     },
     "duke": {
       "required_percent": 85.0,
       "display_name": "Duke",
-      "icon": "cobblemon:beast_ball",
-      "icon_lore": [],
-      "icon_data": {},
+      "icon_item": {
+        "id": "cobblemon:exp_candy_xl"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 8x Exp. Candy XL",
+        "<white> • 16x Rare Candy"
+      ],
       "rewards": {
-        "example_item_reward": {
-          "display_name": "%item_count%x %item%",
+        "exp_candy_xl": {
           "type": "item",
-          "item": "cobblemon:master_ball",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 1
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:exp_candy_xl"
+          },
+          "min_count": 8,
+          "max_count": 8
+        },
+        "rare_candy": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:rare_candy"
+          },
+          "min_count": 16,
+          "max_count": 16
         }
       }
     },
     "champion": {
       "required_percent": 90.0,
       "display_name": "Champion",
-      "icon": "cobblemon:master_ball",
-      "icon_lore": [],
-      "icon_data": {},
+      "icon_item": {
+        "id": "cobblemon:cherish_ball"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 1x Master Ball",
+        "<white> • 1x Ability Patch"
+      ],
       "rewards": {
-        "example_item_reward": {
-          "display_name": "%item_count%x %item%",
+        "master_ball": {
           "type": "item",
-          "item": "cobblemon:ancient_origin_ball",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 1
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:master_ball"
+          },
+          "min_count": 1,
+          "max_count": 1
+        },
+        "ability_patch": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:ability_patch"
+          },
+          "min_count": 1,
+          "max_count": 1
         }
       }
     },
-    "world_champion": {
+    "legend": {
       "required_percent": 95.0,
-      "display_name": "World Champion",
-      "icon": "cobblemon:cherish_ball",
-      "icon_lore": [],
-      "icon_data": {},
+      "display_name": "Legend",
+      "icon_item": {
+        "id": "cobblemon:pp_max"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 16x Exp. Candy XL",
+        "<white> • 4x PP Max"
+      ],
       "rewards": {
-        "example_item_reward": {
-          "display_name": "%item_count%x %item%",
+        "exp_candy_xl": {
           "type": "item",
-          "item": "cobblemon:exp_candy_xl",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 16
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:exp_candy_xl"
+          },
+          "min_count": 16,
+          "max_count": 16
+        },
+        "pp_max": {
+          "type": "item",
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:pp_max"
+          },
+          "min_count": 4,
+          "max_count": 4
         }
       }
     },
-    "arceus": {
+    "pokedex_master": {
       "required_percent": 100.0,
-      "display_name": "Arceus",
-      "icon": "minecraft:nether_star",
-      "icon_lore": [],
-      "icon_data": {},
+      "display_name": "Pokédex Master",
+      "icon_item": {
+        "id": "minecraft:nether_star"
+      },
+      "icon_lore": [
+        "<gray>Rewards:",
+        "<white> • 3x Master Ball",
+        "<white> • 1x Ancient Origin Ball"
+      ],
       "rewards": {
-        "example_command_reward": {
-          "display_name": "Completion Announcement",
+        "completion_announcement": {
           "type": "command",
+          "display_name": "Completion Announcement",
           "commands": [
             "tellraw @a [\"\",{\"text\":\"[\",\"color\":\"dark_gray\"},{\"text\":\"DexRewards\",\"color\":\"blue\"},{\"text\":\"]\",\"color\":\"dark_gray\"},{\"text\":\" %player% has completed their pokedex!\",\"color\":\"gold\"}]"
           ]
         },
-        "example_item_reward": {
-          "display_name": "%item_count%x %item%",
+        "master_ball": {
           "type": "item",
-          "item": "cobblemon:master_ball",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 6
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:master_ball"
+          },
+          "min_count": 3,
+          "max_count": 3
         },
-        "another_item_reward": {
-          "display_name": "%item_count%x %item%",
+        "ancient_origin_ball": {
           "type": "item",
-          "item": "cobblemon:exp_candy_xl",
-          "item_name": "",
-          "item_lore": [],
-          "item_data": {},
-          "count": 32
+          "display_name": "%item_count%x %item%",
+          "item": {
+            "id": "cobblemon:ancient_origin_ball"
+          },
+          "min_count": 1,
+          "max_count": 1
         }
       }
     }

@@ -61,5 +61,10 @@
       <option name="name" value="LoomGlobalMinecraft" />
       <option name="url" value="file:/$PROJECT_DIR$/../../../../../../Gradle/gradle-8.14/bin/caches/fabric-loom/minecraftMaven/" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="LoomGlobalMinecraft" />
+      <option name="name" value="LoomGlobalMinecraft" />
+      <option name="url" value="file:/$PROJECT_DIR$/../../../../../../Gradle/gradle-9.5.1/bin/caches/fabric-loom/minecraftMaven/" />
+    </remote-repository>
   </component>
 </project>

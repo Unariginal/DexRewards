@@ -1,5 +1,6 @@
 {
   "debug": false,
+  "default_dex_type": "national",
   "implemented_only": true,
   "allow_invalid_species": false
 }
