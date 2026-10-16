@@ -54,18 +54,21 @@
     "symbol": "G",
     "claimed": {
       "item_name": "<green><bold>%group_name% (%group_percent%%)",
-      "item_lore": ["<blue>Already Claimed!"]
+      "item_lore": ["<blue>Already Claimed!"],
+      "show_enchantment_glint": false
     },
     "claimable": {
       "item_name": "<gold><bold>%group_name% (%group_percent%%)",
-      "item_lore": ["<green>Claimable!"]
+      "item_lore": ["<green>Claimable!"],
+      "show_enchantment_glint": true
     },
     "locked": {
       "item": {
         "id": "minecraft:barrier"
       },
       "item_name": "<red><bold>%group_name% (%group_percent%%)",
-      "item_lore": ["<red>Not Unlocked!"]
+      "item_lore": ["<red>Not Unlocked!"],
+      "show_enchantment_glint": false
     }
   }
 }

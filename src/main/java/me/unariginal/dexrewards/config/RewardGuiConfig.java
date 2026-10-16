@@ -8,8 +8,12 @@ public class RewardGuiConfig extends BaseGui {
     public GroupsElement groupItem;
 
     public static class GroupsElement extends GuiElement {
-        public GuiElement claimed;
-        public GuiElement claimable;
-        public GuiElement locked;
+        public GroupStatusElement claimed;
+        public GroupStatusElement claimable;
+        public GroupStatusElement locked;
+
+        public static class GroupStatusElement extends GuiElement {
+            public boolean showEnchantmentGlint = false;
+        }
     }
 }

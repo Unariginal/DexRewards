@@ -68,6 +68,7 @@ public class RewardsGui extends PagedGui {
                     if (progressTracker.claimableRewards.contains(rewardGroup.rewardGroupId)) {
                         guiElementBuilder.setName(deserialize(REWARD_GUI.groupItem.claimable.itemName, groupParseContext));
                         guiElementBuilder.setLore(deserializeLore(rewardGroup.iconLore, groupParseContext));
+                        guiElementBuilder.glow(REWARD_GUI.groupItem.claimable.showEnchantmentGlint);
                         guiElementBuilder.setCallback(clickType -> {
                             if (progressTracker.claimableRewards.remove(rewardGroup.rewardGroupId)) {
                                 progressTracker.claimedRewards.add(rewardGroup.rewardGroupId);
@@ -80,11 +81,13 @@ public class RewardsGui extends PagedGui {
                     } else if (progressTracker.claimedRewards.contains(rewardGroup.rewardGroupId)) {
                         guiElementBuilder.setName(deserialize(REWARD_GUI.groupItem.claimed.itemName, groupParseContext));
                         guiElementBuilder.setLore(deserializeLore(rewardGroup.iconLore, groupParseContext));
+                        guiElementBuilder.glow(REWARD_GUI.groupItem.claimed.showEnchantmentGlint);
                     } else {
                         if (REWARD_GUI.groupItem.locked.item != null)
                             guiElementBuilder.setItem(REWARD_GUI.groupItem.locked.item.getItem());
                         guiElementBuilder.setName(deserialize(REWARD_GUI.groupItem.locked.itemName, groupParseContext));
                         guiElementBuilder.setLore(deserializeLore(rewardGroup.iconLore, groupParseContext));
+                        guiElementBuilder.glow(REWARD_GUI.groupItem.locked.showEnchantmentGlint);
                     }
 
                     setSlot(i, guiElementBuilder.build());
