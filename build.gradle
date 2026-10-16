@@ -45,7 +45,7 @@ dependencies {
 
     modImplementation include("net.kyori:adventure-platform-fabric:5.14.2")
 
-    modImplementation include("eu.pb4:placeholder-api:2.4.1+1.21")
+    modImplementation "eu.pb4:placeholder-api:2.4.1+1.21"
     modImplementation include("eu.pb4:sgui:1.6.1+1.21.1")
 
     modImplementation "com.cobblemon:fabric:${project.cobblemon_version}"
