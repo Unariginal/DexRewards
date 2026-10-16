@@ -2,12 +2,12 @@ package me.unariginal.dexrewards.placeholders.types.player;
 
 import me.unariginal.dexrewards.config.DexTypeConfig;
 import me.unariginal.dexrewards.data.PlayerData;
+import me.unariginal.dexrewards.data.rewards.RewardGroup;
 import me.unariginal.dexrewards.placeholders.GenericResult;
 import me.unariginal.dexrewards.placeholders.PlaceholderManager;
 import me.unariginal.dexrewards.placeholders.interfaces.PlayerDexTypePlaceholder;
 import net.minecraft.server.network.ServerPlayerEntity;
 
-import java.util.Comparator;
 import java.util.List;
 
 public class PlayerRewardGroup implements PlayerDexTypePlaceholder {
@@ -16,11 +16,12 @@ public class PlayerRewardGroup implements PlayerDexTypePlaceholder {
         PlayerData.ProgressTracker tracker = PlaceholderManager.getProgress(player, dexTypeConfig);
         if (tracker == null) return GenericResult.invalid("NO PROGRESS");
 
-        return GenericResult.valid(dexTypeConfig.rewardGroups.values().stream()
-                .filter(group -> tracker.claimedRewards.contains(group.rewardGroupId))
-                .max(Comparator.comparingDouble(group -> group.requiredPercent))
-                .map(group -> group.displayName)
-                .orElse("None"));
+        RewardGroup latest = null;
+        for (RewardGroup group : dexTypeConfig.rewardGroups.values()) {
+            if (!tracker.claimedRewards.contains(group.rewardGroupId)) continue;
+            if (latest == null || group.requiredPercent >= latest.requiredPercent) latest = group;
+        }
+        return GenericResult.valid(latest != null ? latest.displayName : "None");
     }
 
     @Override

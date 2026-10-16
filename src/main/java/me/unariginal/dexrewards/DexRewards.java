@@ -108,6 +108,12 @@ public class DexRewards implements ModInitializer {
 
             int total = dexTypeConfig.requireAllForms ? dexTypeConfig.validForms.size() : dexTypeConfig.validEntries.size();
             dexTypeTotals.put(dexTypeConfig.dexTypeId, total);
+            if (total == 0) {
+                LOGGER.warn("[DexRewards] Dex type {} has no valid {} after filtering. Check its valid/ignored species, labels{}.",
+                        dexTypeConfig.dexTypeId,
+                        dexTypeConfig.requireAllForms ? "forms" : "species",
+                        dexTypeConfig.requireAllForms ? " and ignored forms" : "");
+            }
         }
 
         for (ServerPlayerEntity player : INSTANCE.server.getPlayerManager().getPlayerList()) {

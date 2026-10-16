@@ -1,10 +1,10 @@
 {
   "prefix": "<dark_gray>[<blue>DexRewards<dark_gray>]",
-  "rewards_to_claim": "%prefix% <gray>You have rewards to claim!",
-  "reward_claimable": "%prefix% <gray>You can claim the %group_name% rewards!",
+  "rewards_to_claim": "%prefix% <gray>You have rewards to claim from the %dex_type% dex!",
+  "reward_claimable": "%prefix% <gray>You can claim the %group_name% rewards from the %dex_type% dex!",
   "rewards_claimed": "%prefix% <gray>You've claimed rewards for %group_name%!",
-  "reset_command_sender": "%prefix% <gray>You've reset %player%'s pokedex reward progress!",
-  "reset_command_target": "%prefix% <gray>Your pokedex reward progress has been reset!",
+  "reset_command_sender": "%prefix% <gray>You've reset %player%'s %dex_type% dex reward progress!",
+  "reset_command_target": "%prefix% <gray>Your %dex_type% dex reward progress has been reset!",
   "update_command": "%prefix% <gray>You've updated the pokedex reward progress of %player%",
   "reload_command": "%prefix% <gray>Reloaded!"
 }

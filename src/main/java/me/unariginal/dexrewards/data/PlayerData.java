@@ -75,7 +75,8 @@ public class PlayerData {
             List<String> newClaimableRewards = new ArrayList<>();
             dexTypeConfig.rewardGroups.forEach((groupId, group) -> {
                 if (!tracker.claimedRewards.contains(group.rewardGroupId)) {
-                    double percent = ((double) tracker.progressCount / DexRewards.dexTypeTotals.get(dexTypeConfig.dexTypeId)) * 100.0;
+                    int total = DexRewards.dexTypeTotals.getOrDefault(dexTypeConfig.dexTypeId, 0);
+                    double percent = total > 0 ? (double) tracker.progressCount / total * 100.0 : 0.0;
                     if (percent >= group.requiredPercent) {
                         newClaimableRewards.add(group.rewardGroupId);
                         if (!tracker.claimableRewards.contains(group.rewardGroupId)) {
